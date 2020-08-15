@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('webhook', 'ControllerBotFacebook@setWebhook');
 
-Route::post('webhook', 'ControllerBotFacebook@handle');
+Route::post('webhook', 'ControllerBotFacebook@webhook');
