@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modules\Handler\Handler;
 use Illuminate\Http\Request;
 use Log;
 
@@ -32,8 +33,27 @@ class ControllerBotFacebook extends Controller
 
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
+     */
     public function webhook(Request $request)
     {
+        /**
+         * @var string $message
+         */
+        $message = $request->getContent();
+
+        /**
+         * @var \App\Modules\Handler\Handler $handle
+         */
+        $handle = new Handler();
+        $handle->handle($message);
+
+
+        return response('OK', 200);
 
     }
 }
