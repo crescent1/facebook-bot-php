@@ -2,6 +2,8 @@
 
 namespace App\Modules\Handler;
 
+use Log;
+
 class Handler
 {
     /**
@@ -12,6 +14,8 @@ class Handler
      */
     public function handle(string $message)
     {
+
+        Log::info($message);
 
     }
 }
