@@ -88,7 +88,7 @@ class BotFacebook
      * @param array $message
      * @return void
      */
-    public function takeThreadControl($message)
+    public function takeThreadControl(array $message)
     {
         $this->http->post('take_thread_control?access_token=' . $this->token, [
             'form_params' => $message

@@ -163,4 +163,46 @@ class BFMessages
 
         return $message;
     }
+
+    /**
+     * Seeting parameter button Template
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function buttonTemplate(array $data)
+    {
+        /**
+         * @var array $recipient
+         */
+        $recipient = [
+            'id' => $data['senderID'],
+        ];
+
+        /**
+         * @var array $dataMessage
+         */
+        $dataMessage = [
+            'attachment' => [
+                'type' => 'template',
+                'payload' => [
+                    'template_type' => 'button',
+                    'text' => $data['text'],
+                    'buttons' => $data['button'],
+                ],
+            ],
+
+        ];
+
+        /**
+         * @var array $message
+         */
+        $message = [
+            'messaging_type' => 'RESPONSE',
+            'recipient' => $recipient,
+            'message' => $dataMessage,
+        ];
+
+        return $message;
+    }
 }
