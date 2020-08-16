@@ -44,7 +44,7 @@ class Handler
         $status = BFMessages::messageStatus($data);
         if($status === 'STANDBY'){
 
-            $this->handover->handle($status, $data);
+            // $idPengirim =  $data['entry']['0']['stanby']['0']['sender']['id'];
 
         } else {
 
