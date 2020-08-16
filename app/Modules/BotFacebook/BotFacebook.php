@@ -55,4 +55,30 @@ class BotFacebook
             'form_params' => $message
         ]);
     }
+
+    /**
+     * kirim pass thread control
+     *
+     * @param array $message
+     * @return void
+     */
+    public function passThreadControl(array $message)
+    {
+        $this->http->post('pass_thread_control?access_token=' . $this->token, [
+            'form_params' => $message
+        ]);
+    }
+
+    /**
+     * kirim take thread control
+     *
+     * @param array $message
+     * @return void
+     */
+    public function takeThreadControl($message)
+    {
+        $this->http->post('take_thread_control?access_token=' . $this->token, [
+            'form_params' => $message
+        ]);
+    }
 }
