@@ -62,7 +62,9 @@ class Handler
                 $handle = new HPostback();
                 $handle->handle($data);
 
-            } elseif($type === 'MESSAGE') {
+            }
+
+            if($type === 'MESSAGE') {
 
                 $contents = BFMessages::messageContentsType($data);
                 if($contents === 'QUICK_REPLY') {
@@ -73,7 +75,9 @@ class Handler
                     $handle = new HQuickReply();
                     $handle->hanlde($data);
 
-                } elseif($contents === 'MESSAGE') {
+                }
+
+                if($contents === 'MESSAGE') {
 
                     /**
                      * @var \App\Modules\Handler\HMessage $handle
@@ -81,7 +85,9 @@ class Handler
                     $handle = new HMessage();
                     $handle->handle($data);
 
-                } else {
+                }
+
+                if($contents === 'OTHER'){
 
                     /**
                      * @var \App\Modules\Handler\HOther $handle
@@ -91,19 +97,27 @@ class Handler
 
                 }
 
-            } elseif($type === 'TAKETHREAD') {
+            }
+
+            if($type === 'TAKETHREAD') {
 
                 $this->handover->handle($type, $data);
 
-            } elseif($type === 'REQUESTTHREAD') {
+            }
+
+            if($type === 'REQUESTTHREAD') {
 
                 $this->handover->handle($type, $data);
 
-            } elseif($type === 'PASSTHREAD') {
+            }
+
+            if($type === 'PASSTHREAD') {
 
                 $this->handover->handle($type, $data);
 
-            } else {
+            }
+
+            if($type === 'OTHER'){
 
                 /**
                  * @var \App\Modules\Handler\HOther $handle
