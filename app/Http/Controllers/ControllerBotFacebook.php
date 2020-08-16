@@ -21,11 +21,30 @@ class ControllerBotFacebook extends Controller
          * @var string $hubMode
          */
         $hubMode = $request->input('hub_mode');
-        $hubVerifyToken = $request->input('hub_verify_token');
-        $hubChallenge = $request->input('hub_challenge');
-        $token = config('botfacebook.fb.token');
 
-        if($hubMode === 'subscribe' && $hubVerifyToken === $token) {
+        /**
+         * @var string $subscribe
+         */
+        $subscribe = 'subscribe';
+
+        /**
+         * @var string $hubVerifyToken
+         */
+        $hubVerifyToken = $request->input('hub_verify_token');
+
+        /**
+         * @var string $token
+         */
+        $token = config('botfacebook.fb_token');
+
+        /**
+         * @var string $hubChallenge
+         */
+        $hubChallenge = $request->input('hub_challenge');
+
+
+
+        if($hubMode === $subscribe && $hubVerifyToken === $token) {
 
             return response($hubChallenge, 200);
 
