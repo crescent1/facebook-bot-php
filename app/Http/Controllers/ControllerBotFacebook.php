@@ -68,12 +68,13 @@ class ControllerBotFacebook extends Controller
          */
         $message = $request->getContent();
 
+        Log::info($message);
+
         /**
          * @var \App\Modules\Handler\Handler $handle
          */
         $handle = new Handler();
         $handle->handle($message);
-
 
         return response('OK', 200);
 

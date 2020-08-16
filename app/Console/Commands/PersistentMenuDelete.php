@@ -2,10 +2,18 @@
 
 namespace App\Console\Commands;
 
+use App\Modules\BotFacebook\BFMessages;
+use App\Modules\BotFacebook\BotFacebook;
 use Illuminate\Console\Command;
 
 class PersistentMenuDelete extends Command
 {
+    /**
+     * set $botfacebook
+     *
+     * @var \App\Modules\BotFacebook\BotFacebook $botfacebook
+     */
+    protected $botfacebook;
     /**
      * The name and signature of the console command.
      *
@@ -25,9 +33,11 @@ class PersistentMenuDelete extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(BotFacebook $data)
     {
         parent::__construct();
+
+        $this->botfacebook = $data;
     }
 
     /**
@@ -37,6 +47,8 @@ class PersistentMenuDelete extends Command
      */
     public function handle()
     {
-        //
+        $message = BFMessages::deletePersistentMenu();
+        $this->botfacebook->messagesDeleteProfile($message);
+        $this->info('Delete Persistent Menu Sukses!');
     }
 }

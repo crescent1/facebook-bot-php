@@ -2,10 +2,19 @@
 
 namespace App\Console\Commands;
 
+use App\Modules\BotFacebook\BFMessages;
+use App\Modules\BotFacebook\BotFacebook;
 use Illuminate\Console\Command;
 
 class PersistentMenuSetting extends Command
 {
+    /**
+     * set $botfacebook
+     *
+     * @var \App\Modules\BotFacebook\BotFacebook $botfacebook
+     */
+    protected $botfacebook;
+
     /**
      * The name and signature of the console command.
      *
@@ -25,9 +34,11 @@ class PersistentMenuSetting extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(BotFacebook $data)
     {
         parent::__construct();
+
+        $this->botfacebook = $data;
     }
 
     /**
@@ -37,6 +48,8 @@ class PersistentMenuSetting extends Command
      */
     public function handle()
     {
-        //
+        $message = BFMessages::settingPersistentMenu();
+        $this->botfacebook->messagesProfile($message);
+        $this->info('Setting Persistent Menu Sukses!');
     }
 }

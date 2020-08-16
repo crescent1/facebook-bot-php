@@ -156,7 +156,9 @@ class BFMessages
          * @var array $message
          */
         $message = [
-            'persistent_menu',
+            'fields' => [
+                'persistent_menu',
+            ],
         ];
 
         return $message;
