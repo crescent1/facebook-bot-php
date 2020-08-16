@@ -57,6 +57,19 @@ class BotFacebook
     }
 
     /**
+     * delete messageProfile
+     *
+     * @param array $message
+     * @return void
+     */
+    public function messagesDeleteProfile(array $message)
+    {
+        $this->http->delete('messenger_profile?access_token=' . $this->token, [
+            'form_params' => $message
+        ]);
+    }
+
+    /**
      * kirim pass thread control
      *
      * @param array $message

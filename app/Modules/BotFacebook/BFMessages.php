@@ -94,4 +94,71 @@ class BFMessages
 
         return $result;
     }
+
+    /**
+     * setting untuk persistent Menu
+     *
+     * @return array
+     */
+    public static function settingPersistentMenu()
+    {
+        /**
+         * @var array $getStarted
+         */
+        $getStarted = [
+            'payload' => 'MULAI',
+        ];
+
+        /**
+         * @var array $persistentMenu
+         */
+        $persistentMenu = [
+            [
+                'locale' => 'default',
+                'composer_input_disabled' => false,
+                'call_to_actions' => [
+                    [
+                        'type' => 'postback',
+                        'title' => 'CHAT BOT',
+                        'payload' => 'CHATBOT'
+                    ],
+                    [
+                        'type' => 'postback',
+                        'title' => 'CHAT CS',
+                        'payload' => 'CHATCS'
+                    ],
+                ],
+
+            ],
+
+        ];
+
+        /**
+         * @var array $message
+         */
+        $message = [
+            'get_started' => $getStarted,
+            'persistent_menu' => $persistentMenu,
+        ];
+
+        return $message;
+
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return array
+     */
+    public static function deletePersistentMenu()
+    {
+        /**
+         * @var array $message
+         */
+        $message = [
+            'persistent_menu',
+        ];
+
+        return $message;
+    }
 }
