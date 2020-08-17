@@ -217,34 +217,24 @@ class BFMessages
     public static function buttonTemplate(array $data)
     {
         /**
-         * @var array $recipient
-         */
-        $recipient = [
-            'id' => $data['senderID'],
-        ];
-
-        /**
-         * @var array $dataMessage
-         */
-        $dataMessage = [
-            'attachment' => [
-                'type' => 'template',
-                'payload' => [
-                    'template_type' => 'button',
-                    'text' => $data['text'],
-                    'buttons' => $data['button'],
-                ],
-            ],
-
-        ];
-
-        /**
          * @var array $message
          */
         $message = [
             'messaging_type' => 'RESPONSE',
-            'recipient' => $recipient,
-            'message' => $dataMessage,
+            'recipient' => [
+                'id' => $data['senderID'],
+            ],
+            'message' => [
+                'attachment' => [
+                    'type' => 'template',
+                    'payload' => [
+                        'template_type' => 'button',
+                        'text' => $data['text'],
+                        'buttons' => $data['button'],
+                    ],
+                ],
+
+            ],
         ];
 
         return $message;
@@ -259,26 +249,16 @@ class BFMessages
     public static function messageOnly(array $data)
     {
         /**
-         * @var array $recipient
-         */
-        $recipient = [
-            'id' => $data['senderID'],
-        ];
-
-        /**
-         * @var array $dataMessage
-         */
-        $dataMessage = [
-            'text' => $data['text'],
-        ];
-
-        /**
          * @var array $message
          */
         $message = [
             'messaging_type' => 'RESPONSE',
-            'recipient' => $recipient,
-            'message' => $dataMessage,
+            'recipient' => [
+                'id' => $data['senderID'],
+            ],
+            'message' => [
+                'text' => $data['text'],
+            ],
         ];
 
         return $message;
@@ -293,27 +273,17 @@ class BFMessages
     public static function quickReply(array $data)
     {
         /**
-         * @var array $recipient
-         */
-        $recipient = [
-            'id' => $data['senderID'],
-        ];
-
-        /**
-         * @var array $dataMessage
-         */
-        $dataMessage = [
-            'text' => $data['text'],
-            'quick_replies' => $data['button'],
-        ];
-
-        /**
          * @var array $message
          */
         $message = [
             'messaging_type' => 'RESPONSE',
-            'recipient' => $recipient,
-            'message' => $dataMessage,
+            'recipient' => [
+                'id' => $data['senderID'],
+            ],
+            'message' => [
+                'text' => $data['text'],
+                'quick_replies' => $data['button'],
+            ],
         ];
 
         return $message;
