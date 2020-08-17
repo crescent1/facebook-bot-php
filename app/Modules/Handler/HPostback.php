@@ -59,7 +59,7 @@ class HPostback
                 $button = BFButtons::buttonWelcome();
 
                 /**
-                 * siapkan data untuk parameter
+                 * siapkan data parameter
                  *
                  * @var array $data
                  */
@@ -81,6 +81,47 @@ class HPostback
                 break;
 
             case 'CHATBOT' :
+
+                /**
+                 * siapkan parameter yang dibutuhkan untuk take thread control
+                 */
+                $takeControl = BFMessages::takeThreadControl($senderID);
+
+                /**
+                 * kirim pesan take thread control
+                 */
+                $this->botfacebook->takeThreadControl($takeControl);
+
+                /**
+                 * siapkan text
+                 */
+                $text = Text::textChatBOT();
+
+                /**
+                 * siapkan tombol
+                 */
+                $button = BFButtons::buttonQuickReply();
+
+                /**
+                 * siapkan data parameter
+                 *
+                 * @var array $data
+                 */
+                $data = [
+                    'senderID' => $senderID,
+                    'text' => $text,
+                    'button' => $button,
+                ];
+
+                /**
+                 * siapkan parameter
+                 */
+                $message = BFMessages::quickReply($data);
+
+                /**
+                 * kirim pesan quick reply
+                 */
+                $this->botfacebook->messages($message);
 
 
                 break;

@@ -17,6 +17,18 @@ class Text
     }
 
     /**
+     * text bot
+     *
+     * @return string
+     */
+    public static function textChatBOT()
+    {
+        $text = 'Hallo, ini adalah menu chat BOT!';
+
+        return $text;
+    }
+
+    /**
      * text cs
      *
      * @return string

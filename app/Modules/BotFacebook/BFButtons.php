@@ -31,4 +31,42 @@ class BFButtons
         return $button;
     }
 
+    /**
+     * siapkan tombol untuk quick reply
+     *
+     * @return array
+     */
+    public static function buttonQuickReply()
+    {
+        /**
+         * @var array $button
+         */
+        $button = [
+            [
+                'content_type' => 'text',
+                'title' => 'TEST',
+                'payload' => 'TEST'
+            ],
+            [
+                'content_type' => 'text',
+                'title' => 'TEST',
+                'payload' => 'TEST'
+            ],
+            [
+                'content_type' => 'text',
+                'title' => 'TEST',
+                'payload' => 'TEST'
+            ],
+            [
+                'content_type' => 'text',
+                'title' => 'TEST',
+                'payload' => 'TEST'
+            ],
+
+        ];
+
+        return $button;
+
+    }
+
 }

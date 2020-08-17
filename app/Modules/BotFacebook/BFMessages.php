@@ -283,4 +283,40 @@ class BFMessages
 
         return $message;
     }
+
+    /**
+     * siapkan quick reply
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function quickReply(array $data)
+    {
+        /**
+         * @var array $recipient
+         */
+        $recipient = [
+            'id' => $data['senderID'],
+        ];
+
+        /**
+         * @var array $dataMessage
+         */
+        $dataMessage = [
+            'text' => $data['text'],
+            'quick_replies' => $data['button'],
+        ];
+
+        /**
+         * @var array $message
+         */
+        $message = [
+            'messaging_type' => 'RESPONSE',
+            'recipient' => $recipient,
+            'message' => $dataMessage,
+        ];
+
+        return $message;
+
+    }
 }
