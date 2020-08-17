@@ -34,7 +34,21 @@ class HPostback
         if($payload === 'MULAI') {
 
             /**
-             * siapkan text
+             * ketika tombol get started ditekan, bot akan mengambil alih controll
+             */
+
+            /**
+             * siapkan parameter yang dibutuhkan untuk take thread control
+             */
+            $takeControll = BFMessages::takeThreadControl($senderID);
+
+            /**
+             * kirim pesan take thread control
+             */
+            $this->botfacebook->takeThreadControl($takeControll);
+
+            /**
+             * siapkan text balasan
              */
             $text = Text::textWelcome();
 

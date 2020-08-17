@@ -2,7 +2,6 @@
 
 namespace App\Modules\BotFacebook;
 
-use PhpParser\Node\Stmt\Return_;
 
 class BFMessages
 {
@@ -159,6 +158,51 @@ class BFMessages
             'fields' => [
                 'persistent_menu',
             ],
+        ];
+
+        return $message;
+    }
+
+    /**
+     * fungsi untuk mengambil alaih percakapan dari cs ke bot
+     *
+     * @param string $senderID
+     * @return array
+     */
+    public static function takeThreadControl(string $senderID)
+    {
+        /**
+         * @var array $message
+         */
+        $message = [
+            'recipient' => [
+                'id' => $senderID,
+            ],
+            'metadata' => 'Control take by BOT!',
+        ];
+
+        return $message;
+    }
+
+    /**
+     * digunakan untuk menyerahkan controll percakapan pada app lain
+     * pada contoh ini percakapan dialihkan pada inbox halaman yang dapat di gunakan oleh CS
+     * ketika control diserahkan ke inbox, targat_app_id harus di isi 263902037430900
+     *
+     * @param string $senderID
+     * @return array
+     */
+    public static function passThreadControl(string $senderID)
+    {
+        /**
+         * @var array $message
+         */
+        $message = [
+            'recipient' => [
+                'id' => $senderID,
+            ],
+            'target_app_id' => '263902037430900',
+            'metadata' => 'Control pass to Inbox CS!',
         ];
 
         return $message;
