@@ -249,4 +249,38 @@ class BFMessages
 
         return $message;
     }
+
+    /**
+     * parameter untuk mengirim pesan biasa tanpa tombol
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function messageOnly(array $data)
+    {
+        /**
+         * @var array $recipient
+         */
+        $recipient = [
+            'id' => $data['senderID'],
+        ];
+
+        /**
+         * @var array $dataMessage
+         */
+        $dataMessage = [
+            'text' => $data['text'],
+        ];
+
+        /**
+         * @var array $message
+         */
+        $message = [
+            'messaging_type' => 'RESPONSE',
+            'recipient' => $recipient,
+            'message' => $dataMessage,
+        ];
+
+        return $message;
+    }
 }

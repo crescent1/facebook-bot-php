@@ -15,4 +15,16 @@ class Text
 
         return $text;
     }
+
+    /**
+     * text cs
+     *
+     * @return string
+     */
+    public static function textChatCS()
+    {
+        $text = 'Hai, kamu terhubung dengan cs, silahkan ketik pesan anda!';
+
+        return $text;
+    }
 }

@@ -6,6 +6,7 @@ use App\Modules\BotFacebook\BFButtons;
 use App\Modules\BotFacebook\BFMessages;
 use App\Modules\BotFacebook\BotFacebook;
 use App\Modules\Items\Text;
+use Log;
 
 class HPostback
 {
@@ -31,54 +32,99 @@ class HPostback
         $senderID =  $data['entry']['0']['messaging']['0']['sender']['id'];
         $payload =  $data['entry']['0']['messaging']['0']['postback']['payload'];
 
-        if($payload === 'MULAI') {
+        switch ($payload) {
+            case 'MULAI':
+                /**
+                 * ketika tombol get started ditekan, bot akan mengambil alih controll
+                 */
 
-            /**
-             * ketika tombol get started ditekan, bot akan mengambil alih controll
-             */
+                /**
+                 * siapkan parameter yang dibutuhkan untuk take thread control
+                 */
+                $takeControl = BFMessages::takeThreadControl($senderID);
 
-            /**
-             * siapkan parameter yang dibutuhkan untuk take thread control
-             */
-            $takeControll = BFMessages::takeThreadControl($senderID);
+                /**
+                 * kirim pesan take thread control
+                 */
+                $this->botfacebook->takeThreadControl($takeControl);
 
-            /**
-             * kirim pesan take thread control
-             */
-            $this->botfacebook->takeThreadControl($takeControll);
+                /**
+                 * siapkan text balasan
+                 */
+                $text = Text::textWelcome();
 
-            /**
-             * siapkan text balasan
-             */
-            $text = Text::textWelcome();
+                /**
+                 * siapkan button
+                 */
+                $button = BFButtons::buttonWelcome();
 
-            /**
-             * siapkan button
-             */
-            $button = BFButtons::buttonWelcome();
+                /**
+                 * siapkan data untuk parameter
+                 *
+                 * @var array $data
+                 */
+                $data = [
+                    'senderID' => $senderID,
+                    'text' => $text,
+                    'button' => $button,
+                ];
 
-            /**
-             * siapkan data untuk parameter
-             *
-             * @var array $data
-             */
-            $data = [
-                'senderID' => $senderID,
-                'text' => $text,
-                'button' => $button,
-            ];
+                /**
+                 * siapkan parameter
+                 */
+                $message = BFMessages::buttonTemplate($data);
 
-            /**
-             * siapkan parameter
-             */
-            $message = BFMessages::buttonTemplate($data);
+                /**
+                 * kirimkan pesan balasan ke user
+                 */
+                $this->botfacebook->messages($message);
+                break;
 
-            /**
-             * kirimkan pesan balasan ke user
-             */
-            $this->botfacebook->messages($message);
+            case 'CHATBOT' :
 
 
+                break;
+
+            case 'CHATCS':
+
+                /**
+                 * siapkan parameter untuk pass thread control
+                 */
+                $passControll = BFMessages::passThreadControl($senderID);
+
+                /**
+                 * kirim pesan pass thread control
+                 */
+                $this->botfacebook->passThreadControl($passControll);
+
+                /**
+                 * siapkan text
+                 */
+                $text = Text::textChatCS();
+
+                /**
+                 * @var array $data
+                 */
+                $data = [
+                    'senderID' => $senderID,
+                    'text' => $text,
+                ];
+
+                /**
+                 * siapkan parameter
+                 */
+                $message = BFMessages::messageOnly($data);
+
+                /**
+                 * kirim pesan
+                 */
+                $this->botfacebook->messages($message);
+
+                break;
+
+            default:
+                # code...
+                break;
         }
 
     }
