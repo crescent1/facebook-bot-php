@@ -51,4 +51,16 @@ class Text
 
         return $text;
     }
+
+    /**
+     * text template
+     *
+     * @return string
+     */
+    public static function textTemplate()
+    {
+        $text = 'Berikut beberapa contoh template!';
+
+        return $text;
+    }
 }
