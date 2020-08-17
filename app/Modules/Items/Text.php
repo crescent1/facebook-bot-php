@@ -35,7 +35,7 @@ class Text
      */
     public static function textChatCS()
     {
-        $text = 'Hai, kamu terhubung dengan cs, silahkan ketik pesan anda!';
+        $text = 'Hai, kamu sedang terhung dengan CS!';
 
         return $text;
     }
