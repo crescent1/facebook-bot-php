@@ -39,4 +39,16 @@ class Text
 
         return $text;
     }
+
+    /**
+     * text else
+     *
+     * @return string
+     */
+    public static function textChatElse()
+    {
+        $text = 'Maaf pesan anda tidak bisa diidentifikasi, hubungsi CS atau gunakan BOT';
+
+        return $text;
+    }
 }
