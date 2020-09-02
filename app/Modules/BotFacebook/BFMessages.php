@@ -289,4 +289,80 @@ class BFMessages
         return $message;
 
     }
+
+    /**
+     * Undocumented function
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function genericTemplate(array $data)
+    {
+        /**
+         * bisa di sesuaikan dengan kebutuhan
+         * disa digunakan dengan looping dsb.
+         */
+        $element = [
+            [
+                'image_url' => $data['text']['photo'],
+                'title' => $data['text']['title'],
+                'subtitle' => $data['text']['subtitle'],
+                'buttons' => [
+                    [
+                        'type' => 'postback',
+                        'title' => 'Contoh Tombol',
+                        'payload' => 'contoh',
+
+                    ],
+                    [
+                        'type' => 'postback',
+                        'title' => 'Contoh Tombol',
+                        'payload' => 'contoh',
+
+                    ],
+                ],
+
+            ],
+            [
+                'image_url' => $data['text']['photo'],
+                'title' => $data['text']['title'],
+                'subtitle' => $data['text']['subtitle'],
+                'buttons' => [
+                    [
+                        'type' => 'postback',
+                        'title' => 'Contoh Tombol',
+                        'payload' => 'contoh',
+
+                    ],
+                    [
+                        'type' => 'postback',
+                        'title' => 'Contoh Tombol',
+                        'payload' => 'contoh',
+
+                    ],
+                ],
+
+            ],
+        ];
+
+        $pesan = [
+            'messaging_type' => 'RESPONSE',
+            'recipient' => [
+                'id' => $data['senderID'],
+            ],
+            'message' => [
+                'attachment' => [
+                    'type' => 'template',
+                    'payload' => [
+                        'template_type' => 'generic',
+                        'image_aspect_ratio' => 'square',
+                        'elements' => $element,
+                    ],
+                ],
+                'quick_replies' => $data['button'],
+            ],
+        ];
+
+        return $pesan;
+    }
 }

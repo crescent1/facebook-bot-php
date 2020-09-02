@@ -6,6 +6,7 @@ use App\Modules\BotFacebook\BFButtons;
 use App\Modules\BotFacebook\BFMessages;
 use App\Modules\BotFacebook\BotFacebook;
 use App\Modules\Items\Text;
+use Log;
 
 class HQuickReply
 {
@@ -133,6 +134,51 @@ class HQuickReply
                  * kirim pesan quick reply
                  */
                 $this->botfacebook->messages($message);
+                break;
+
+            case 'GNR':
+
+                /**
+                 * siapkan data text dll
+                 */
+                $text = Text::textGenertic();
+
+                /**
+                 * siapkan tombol quick replay
+                 */
+                $button = BFButtons::buttonBackTemplate();
+
+                /**
+                 * siapkan data parameter
+                 *
+                 * @var array $data
+                 */
+                $data = [
+                    'senderID' => $senderID,
+                    'text' => $text,
+                    'button' => $button,
+                ];
+
+                /**
+                 * siapkan parameter
+                 */
+                $message = BFMessages::genericTemplate($data);
+
+                /**
+                 * kirim pesan generic template
+                 */
+                $this->botfacebook->messages($message);
+
+                break;
+
+            case 'BTN':
+
+                Log::info('BUTTON');
+                break;
+
+            case 'MDA':
+
+                Log::info('media');
                 break;
 
             default:

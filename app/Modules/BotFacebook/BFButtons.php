@@ -90,10 +90,28 @@ class BFButtons
                 'title' => 'MEDIA TEMPLATE',
                 'payload' => 'MDA'
             ],
+
+        ];
+
+        return $button;
+
+    }
+
+    /**
+     * kembali ke pilihan template
+     *
+     * @return array
+     */
+    public static function buttonBackTemplate()
+    {
+        /**
+         * @var array $button
+         */
+        $button = [
             [
                 'content_type' => 'text',
-                'title' => 'LIST TEMPLATE',
-                'payload' => 'LST'
+                'title' => 'BACK',
+                'payload' => 'TEMPLATE'
             ],
 
         ];

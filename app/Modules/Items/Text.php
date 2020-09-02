@@ -63,4 +63,22 @@ class Text
 
         return $text;
     }
+
+    /**
+     * data untuk generic template
+     *
+     * @return array
+     */
+    public static function textGenertic()
+    {
+        $title = 'Contoh Title';
+        $subtitle = 'Contoh Subtitle';
+        $photo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRy9LVpjaxOhg1zmVLWeBk5pWBfftKJOm1N1w&usqp=CAU';
+
+        return [
+            'title' => $title,
+            'subtitle' => $subtitle,
+            'photo' => $photo,
+        ];
+    }
 }
