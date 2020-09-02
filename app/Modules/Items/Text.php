@@ -81,4 +81,20 @@ class Text
             'photo' => $photo,
         ];
     }
+
+    /**
+     * text button template
+     *
+     * @return array
+     */
+    public static function textButton()
+    {
+        $text = 'Ini merupakan contoh penggunaan dari button template!';
+        $button = 'Contoh Tombol';
+
+        return [
+            'text' => $text,
+            'button' => $button,
+        ];
+    }
 }

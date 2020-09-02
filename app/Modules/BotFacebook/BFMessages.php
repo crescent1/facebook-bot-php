@@ -241,6 +241,50 @@ class BFMessages
     }
 
     /**
+     * Seeting parameter button Template
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function buttonTemplate2(array $data)
+    {
+        /**
+         * @var array $message
+         */
+        $message = [
+            'messaging_type' => 'RESPONSE',
+            'recipient' => [
+                'id' => $data['senderID'],
+            ],
+            'message' => [
+                'attachment' => [
+                    'type' => 'template',
+                    'payload' => [
+                        'template_type' => 'button',
+                        'text' => $data['text']['text'],
+                        'buttons' => [
+                            [
+                                'type' => 'postback',
+                                'title' => $data['text']['button'],
+                                'payload' => 'contoh'
+                            ],
+                            [
+                                'type' => 'postback',
+                                'title' => $data['text']['button'],
+                                'payload' => 'contoh'
+                            ],
+                        ],
+                    ],
+                ],
+                'quick_replies' => $data['button'],
+
+            ],
+        ];
+
+        return $message;
+    }
+
+    /**
      * parameter untuk mengirim pesan biasa tanpa tombol
      *
      * @param array $data

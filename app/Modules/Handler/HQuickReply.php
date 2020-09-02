@@ -173,7 +173,36 @@ class HQuickReply
 
             case 'BTN':
 
-                Log::info('BUTTON');
+                /**
+                 * siapkan data text dll
+                 */
+                $text = Text::textButton();
+
+                /**
+                 * siapkan tombol quick replay
+                 */
+                $button = BFButtons::buttonBackTemplate();
+
+                /**
+                 * siapkan data parameter
+                 *
+                 * @var array $data
+                 */
+                $data = [
+                    'senderID' => $senderID,
+                    'text' => $text,
+                    'button' => $button,
+                ];
+
+                /**
+                 * siapkan parameter
+                 */
+                $message = BFMessages::buttonTemplate2($data);
+
+                /**
+                 * kirim pesan button template
+                 */
+                $this->botfacebook->messages($message);
                 break;
 
             case 'MDA':
