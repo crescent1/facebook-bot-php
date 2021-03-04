@@ -43,7 +43,7 @@ Beberapa yang perlu di setting di file .env:
 
 ## Jalankan Migrasi
 
-Tambahkan database yang diperlukan untuk telegram bot
+Tambahkan database yang diperlukan untuk facebook bot
 
 ```````````````````````
 php artisan migrate
