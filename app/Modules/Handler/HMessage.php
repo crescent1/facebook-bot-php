@@ -2,7 +2,7 @@
 
 namespace App\Modules\Handler;
 
-use App\ModelMessagePosition;
+use App\Models\ModelMessagePosition;
 use App\Modules\BotFacebook\BFButtons;
 use App\Modules\BotFacebook\BFMessages;
 use App\Modules\BotFacebook\BotFacebook;
