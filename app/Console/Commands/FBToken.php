@@ -2,11 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Modules\BotFacebook\BFMessages;
 use App\Modules\BotFacebook\BotFacebook;
 use Illuminate\Console\Command;
 
-class PersistentMenuDelete extends Command
+class FBToken extends Command
 {
     /**
      * set $botfacebook
@@ -20,14 +19,14 @@ class PersistentMenuDelete extends Command
      *
      * @var string
      */
-    protected $signature = 'facebook:pmdelete';
+    protected $signature = 'facebook:token {token}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Digunakan untuk  menghapus/nonaktifkan Persistent Menu';
+    protected $description = 'Digunakan untuk input token dari app console';
 
     /**
      * Create a new command instance.
@@ -44,12 +43,18 @@ class PersistentMenuDelete extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return int
      */
     public function handle()
     {
-        $message = BFMessages::deletePersistentMenu();
-        $this->botfacebook->messagesDeleteProfile($message);
-        $this->info('Delete Persistent Menu Sukses!');
+        /**
+         * @var string
+         */
+        $token = $this->argument('token');
+
+        $this->botfacebook->updateENV($token);
+
+        $this->info('Token berhasil disimpan!');
+        return 0;
     }
 }

@@ -31,6 +31,47 @@ class BotFacebook
     }
 
     /**
+     * uppdate to .env
+     *
+     * @param string $token
+     * @return void
+     */
+    public function updateENV(string $token)
+    {
+        /**
+         * @var string
+         */
+        $key = 'FACEBOOK_TOKEN=';
+
+        /**
+         * @var string
+         */
+        $oldValue = $this->token;
+
+        /**
+         * @var string
+         */
+        $newValue = $token;
+
+        /**
+         * @var string $path
+         */
+        $path = base_path('.env');
+
+        if (file_exists($path)) {
+
+            if($oldValue == '') {
+
+                $oldValue = 'old';
+            }
+
+            file_put_contents($path, str_replace(
+                $key . $oldValue, $key . $newValue, [file_get_contents($path)]
+            ));
+        }
+    }
+
+    /**
      * Kirim pesan dengan menggunakan method messages
      *
      * @param array $message

@@ -20,7 +20,7 @@ class PersistentMenuSetting extends Command
      *
      * @var string
      */
-    protected $signature = 'botfb:setpm';
+    protected $signature = 'facebook:pmsetting';
 
     /**
      * The console command description.
